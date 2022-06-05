@@ -8,27 +8,35 @@ create-proxy-group:
   TIKTOK: "日本|韩国"
 
 rules:
+- DOMAIN-SUFFIX,amemv.com,TIKTOK
 - DOMAIN-SUFFIX,tiktok.com,TIKTOK
 - DOMAIN-SUFFIX,tiktokv.com,TIKTOK
 - DOMAIN-SUFFIX,tiktokcdn.com,TIKTOK
 - DOMAIN-SUFFIX,tiktokcdn-us.com,TIKTOK
 - DOMAIN-SUFFIX,ibytedtos.com,TIKTOK
+- DOMAIN-SUFFIX,ibyteimg.com,TIKTOK
 - DOMAIN-SUFFIX,ipstatp.com,TIKTOK
+- DOMAIN-SUFFIX,sgpstatp.com,TIKTOK
 - DOMAIN-SUFFIX,byteoversea.com,TIKTOK
 - DOMAIN-SUFFIX,tik-tokapi.com,TIKTOK
 - DOMAIN-SUFFIX,muscdn.com,TIKTOK
 - DOMAIN-SUFFIX,musical.ly,TIKTOK
+- DOMAIN-KEYWORD,tiktok,TIKTOK
 
 
 dns:
-  fake-ip-filter:
-  - "+.tiktok.com"
-  - "+.tiktokv.com"
-  - "+.tiktokcdn.com"
-  - "+.tiktokcdn-us.com"
-  - "+.ibytedtos.com"
-  - "+.ipstatp.com"
-  - "+.byteoversea.com"
-  - "+.tik-tokapi.com"
-  - "+.muscdn.com"
-  - "+.musical.ly"
+  fallback-filter:
+    domain:
+    - "+.amemv.com"
+    - "+.tiktok.com"
+    - "+.tiktokv.com"
+    - "+.tiktokcdn.com"
+    - "+.tiktokcdn-us.com"
+    - "+.ibytedtos.com"
+    - "+.ibyteimg.com"
+    - "+.ipstatp.com"
+    - "+.sgpstatp.com"
+    - "+.byteoversea.com"
+    - "+.tik-tokapi.com"
+    - "+.muscdn.com"
+    - "+.musical.ly"

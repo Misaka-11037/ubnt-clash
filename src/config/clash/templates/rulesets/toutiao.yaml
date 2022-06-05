@@ -6,7 +6,7 @@ dns:
   - '+.toutiaoimg.com'
   - '+.toutiaocloud.com'
   - '+.toutiaocloud.net'
-  - '+.amemv.com'
+  # - '+.amemv.com'
   - '+.snssdk.com'
   - '+.douyinpic.com'
   - '+.douyinvod.com'

@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+
 try:
     # python 2
     from urllib import quote_plus
@@ -16,11 +18,12 @@ import random
 
 
 class ClashMonitor:
+    conn = null
 
     def __init__(self, controller, secret):
         self.controller = controller
         self.secret = secret
-        self.conn = httplib.HTTPConnection(self.controller)()
+        self.conn = httplib.HTTPConnection(self.controller)
         self.conn.set_debuglevel(0)
         
         self.headers = {
@@ -122,7 +125,7 @@ class ClashMonitor:
                             self.update_proxy(i, to_test)
                             if current != to_test:
                                 current = to_test
-                            print(i.encode('utf-8') + " Try: " + to_test.encode('utf-8'), )
+                            print(i.encode('utf-8') + " Try: " + to_test.encode('utf-8'), end="")
                             changed = True
 
                         if self.test():

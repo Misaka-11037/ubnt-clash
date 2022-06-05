@@ -1,4 +1,10 @@
-ubnt-clash (0.3.4) sid; urgency=medium
+ubnt-clash (0.4.0) sid; urgency=medium
+
+  * Bump version
+
+ -- sskaje <sskaje@gmail.com>  Sun, 5 Jun 2022 05:54:00 +0000
+ 
+ ubnt-clash (0.3.4) sid; urgency=medium
 
   * Reload config using REST API
   * Auto change server if testing failed
