@@ -18,8 +18,6 @@ import random
 
 
 class ClashMonitor:
-    conn = null
-
     def __init__(self, controller, secret):
         self.controller = controller
         self.secret = secret
