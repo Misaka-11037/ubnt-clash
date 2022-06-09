@@ -192,12 +192,21 @@ function download_config()
   
   CONFIG_URL=$(cli-shell-api returnEffectiveValue interfaces clash $DEV config-url)
 
-  TMPFILE=$CLASH_CONFIG_ROOT/$DEV/download.yaml
+  if [ "$USE_PROXY" == "1" ]; then
+    echo "Download will be proxied via p.rst.im" 1>&2
+    CONFIG_URL=$(echo $CONFIG_URL | sed -e 's#https://#https://p.rst.im/q/#')
+  fi
+
+  TMPFILE=$(mktemp)
   
   curl -q -s -o "$TMPFILE" $CONFIG_URL
+  # todo: if executable == clash, check if Country.mmdb exists
 
-  # test config and install 
-  $CLASH_BINARY -d $CLASH_CONFIG_ROOT/$DEV -f $TMPFILE -t | grep 'test is successful' >/dev/null 2>&1 &&  mv "$TMPFILE" $CLASH_CONFIG_ROOT/$DEV/$CLASH_DOWNLOAD_NAME
+  # test config and install, in /run/clash/utun
+  $CLASH_BINARY -d $CLASH_RUN_ROOT/$DEV -f $TMPFILE -t | grep 'test is successful' >/dev/null 2>&1 &&
+    mv "$TMPFILE" $CLASH_CONFIG_ROOT/$DEV/$CLASH_DOWNLOAD_NAME ||
+    echo "Error: Invalid Clash Config" 1>&2 && exit 1
+  #$CLASH_BINARY -d $CLASH_CONFIG_ROOT/$DEV -f $TMPFILE -t | grep 'test is successful' >/dev/null 2>&1 &&  mv "$TMPFILE" $CLASH_CONFIG_ROOT/$DEV/$CLASH_DOWNLOAD_NAME
 }
 
 function download_geoip_db()
@@ -423,9 +432,10 @@ function run_cron()
 
     # default to 86400
     update_interval=$(cli-shell-api returnEffectiveValue interfaces clash $device update-interval)
-    config_mtime=$(stat -c %Y $CLASH_RUN_ROOT/$device/config.yaml)
+    config_mtime=$(stat -c %Y $CLASH_CONFIG_ROOT/$DEV/$CLASH_DOWNLOAD_NAME)
     diff_in_seconds=$(expr $now_time - $config_mtime)
     REHASHED=""
+
     if [ $diff_in_seconds -gt $update_interval ];then
       download_config $device
       REHASHED="1"
@@ -442,7 +452,6 @@ function run_cron()
         echo "Reloading $DEV via REST API"
         python /usr/bin/clashmonitor.py reload $device
       fi
-
 
       check_interval=$(cli-shell-api returnEffectiveValue interfaces clash $device check-interval)
       checkfile_mtime=$(stat -c %Y $CLASH_RUN_ROOT/$device/checked)
@@ -461,12 +470,8 @@ function run_cron()
       echo "Starting Clash $DEV ." 1>&2
       start
     fi 
-
-
-
   done
 }
-
 
 case $1 in
   start)
@@ -484,8 +489,7 @@ case $1 in
 
   delete)
     delete
-    ;;  
-
+    ;;
 
   restart)
     stop
@@ -549,7 +553,10 @@ case $1 in
     ;;
 
   cron | monitor)
-    run_cron 
+    (
+      flock -e 200
+      run_cron
+    ) 200>/tmp/clash-monitor.lock
     ;;
 
   help)
