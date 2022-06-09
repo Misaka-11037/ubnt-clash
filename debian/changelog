@@ -1,3 +1,10 @@
+ubnt-clash (0.4.1) sid; urgency=medium
+
+  * Fix downloaded file syntax check
+  * Add lock to cron
+
+ -- sskaje <sskaje@gmail.com>  Thu, 9 Jun 2022 05:20:00 +0000
+ 
 ubnt-clash (0.4.0) sid; urgency=medium
 
   * Bump version
