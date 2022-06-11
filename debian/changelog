@@ -1,3 +1,10 @@
+ubnt-clash (0.4.2) sid; urgency=medium
+
+  * Fix config rehash/reload
+  * Remove temp files 
+
+ -- sskaje <sskaje@gmail.com>  Sat, 11 Jun 2022 12:56:00 +0000
+ 
 ubnt-clash (0.4.1) sid; urgency=medium
 
   * Fix downloaded file syntax check
