@@ -82,7 +82,8 @@ Commands:
   restart [utun]         Restart an instance
   delete [utun]          Delete an instance
   status [utun]          Show instance status
-  rehash [utun]          Reload instance config
+  rehash [utun]          Download config and restart to reload 
+  reload [utun]          Reload config
   check_config [utun]    Check instance configuration
   show_config [utun]     Show instance configuration
   install                Install
@@ -205,7 +206,7 @@ function download_config()
   # test config and install, in /run/clash/utun
   $CLASH_BINARY -d $CLASH_RUN_ROOT/$DEV -f $TMPFILE -t | grep 'test is successful' >/dev/null 2>&1 &&
     mv "$TMPFILE" $CLASH_CONFIG_ROOT/$DEV/$CLASH_DOWNLOAD_NAME ||
-    echo "Error: Invalid Clash Config" 1>&2 && exit 1
+    echo "Error: Invalid Clash Config" 1>&2 && rm -f $TMPFILE && exit 1
   #$CLASH_BINARY -d $CLASH_CONFIG_ROOT/$DEV -f $TMPFILE -t | grep 'test is successful' >/dev/null 2>&1 &&  mv "$TMPFILE" $CLASH_CONFIG_ROOT/$DEV/$CLASH_DOWNLOAD_NAME
 }
 
@@ -447,6 +448,8 @@ function run_cron()
       echo "Clash $DEV is running." 1>&2
 
       if [ "$REHASHED" == "1" ]; then
+        # configuration need to be re-generated
+        generate_config
         # stop $device
         # start $device
         echo "Reloading $DEV via REST API"
@@ -541,6 +544,12 @@ case $1 in
 
   show_config)
     show_config
+    ;;
+
+  reload)
+    # re-generate
+    generate_config 
+    python /usr/bin/clashmonitor.py reload $device
     ;;
 
   rehash)
