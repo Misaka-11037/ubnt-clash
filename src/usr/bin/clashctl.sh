@@ -199,8 +199,8 @@ function download_config()
   fi
 
   TMPFILE=$(mktemp)
-  
-  curl -q -s -o "$TMPFILE" $CONFIG_URL
+
+  curl -q -s -L -o "$TMPFILE" $CONFIG_URL
   # todo: if executable == clash, check if Country.mmdb exists
 
   # test config and install, in /run/clash/utun
@@ -281,6 +281,16 @@ function install_yq()
     chmod +x "$TMPFILE"
     # extract
     "$TMPFILE" -V | grep "yq" > /dev/null 2>&1 && sudo mv "$TMPFILE" $YQ_BINARY && echo "yq installed to $YQ_BINARY" 1>&2
+  fi
+
+  if [ -x $YQ_BINARY ]; then
+    # strip binary for better performance
+    if [ -x /usr/bin/strip ]; then
+      /usr/bin/strip $YQ_BINARY
+    fi
+  else 
+    echo "YQ not installed"
+    exit 1
   fi
   rm -f "$TMPFILE"
 }

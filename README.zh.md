@@ -8,6 +8,14 @@ Clash config for Ubnt EdgeRouters
 
 ## 快速开始
 
+### “一键”安装
+
+需要测试
+
+```curl https://p.rst.im/q/raw.githubusercontent.com/sskaje/ubnt-clash/master/one.sh  | bash```
+
+### 命令
+
 从 https://github.com/sskaje/ubnt-clash/releases 下载 deb 包。
 
 ```
