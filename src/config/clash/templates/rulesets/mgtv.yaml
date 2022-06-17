@@ -1,0 +1,6 @@
+dns:
+  fake-ip-filter:
+  - "+.mgtv.com"
+  - "+.hunantv.com"
+  - "+.hitv.com"
+  

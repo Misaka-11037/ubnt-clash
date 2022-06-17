@@ -1,0 +1,14 @@
+dns:
+  fake-ip-filter:
+  - "+.360buyimg.com"
+  - "+.jd.com"
+  - "+.weibo.com"
+  - "+.weibocdn.com"
+  - "+.cibntv.net"
+  - "+.new1cloud.com"
+  - "+.71edge.com"
+  - "+.sogoucdn.com"
+  - "+.umeng.com"
+  - "+.umengcloud.com"
+  - "+.hdslb.com"
+  - "+.miaozhen.com"

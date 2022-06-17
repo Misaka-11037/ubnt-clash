@@ -5,38 +5,20 @@ proxy-groups:
 
 # fill proxy-groups.[xxx].proxies with  [.proxies[] | select( .name | test("日本|韩国") ) | .name]
 create-proxy-group:
-  TIKTOK: "日本|韩国"
+  TIKTOK: "台湾|日本|韩国|美国"
 
 rules:
-- DOMAIN-SUFFIX,amemv.com,TIKTOK
-- DOMAIN-SUFFIX,tiktok.com,TIKTOK
-- DOMAIN-SUFFIX,tiktokv.com,TIKTOK
-- DOMAIN-SUFFIX,tiktokcdn.com,TIKTOK
-- DOMAIN-SUFFIX,tiktokcdn-us.com,TIKTOK
-- DOMAIN-SUFFIX,ibytedtos.com,TIKTOK
-- DOMAIN-SUFFIX,ibyteimg.com,TIKTOK
-- DOMAIN-SUFFIX,ipstatp.com,TIKTOK
-- DOMAIN-SUFFIX,sgpstatp.com,TIKTOK
-- DOMAIN-SUFFIX,byteoversea.com,TIKTOK
-- DOMAIN-SUFFIX,tik-tokapi.com,TIKTOK
-- DOMAIN-SUFFIX,muscdn.com,TIKTOK
-- DOMAIN-SUFFIX,musical.ly,TIKTOK
 - DOMAIN-KEYWORD,tiktok,TIKTOK
-
-
-dns:
-  fallback-filter:
-    domain:
-    - "+.amemv.com"
-    - "+.tiktok.com"
-    - "+.tiktokv.com"
-    - "+.tiktokcdn.com"
-    - "+.tiktokcdn-us.com"
-    - "+.ibytedtos.com"
-    - "+.ibyteimg.com"
-    - "+.ipstatp.com"
-    - "+.sgpstatp.com"
-    - "+.byteoversea.com"
-    - "+.tik-tokapi.com"
-    - "+.muscdn.com"
-    - "+.musical.ly"
+- DOMAIN-KEYWORD,tiktokv.com,TIKTOK
+- DOMAIN-KEYWORD,tiktokcdn.com,TIKTOK
+- DOMAIN-KEYWORD,tiktokcdn-us.com,TIKTOK
+- DOMAIN-KEYWORD,ibytedtos.com,TIKTOK
+- DOMAIN-KEYWORD,ipstatp.com,TIKTOK
+- DOMAIN-KEYWORD,bytelb.com,TIKTOK
+- DOMAIN-KEYWORD,byteoversea.com,TIKTOK
+- DOMAIN-KEYWORD,byteoversea.net,TIKTOK
+- DOMAIN-KEYWORD,tik-tokapi.com,TIKTOK
+- DOMAIN-KEYWORD,muscdn.com,TIKTOK
+- DOMAIN-KEYWORD,musical.ly,TIKTOK
+- DOMAIN-KEYWORD,pitaya-clientai.com,TIKTOK
+- DOMAIN-KEYWORD,bytegecko,TIKTOK
