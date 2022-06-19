@@ -12,3 +12,6 @@ dns:
   - "+.umengcloud.com"
   - "+.hdslb.com"
   - "+.miaozhen.com"
+  - '+.mi.com'
+  - '+.xiaomi.com'
+  - '+.xiaomi.net'

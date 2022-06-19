@@ -1,12 +1,29 @@
 dns:
   fake-ip-filter:
-  - "+.qq.com"
-  - "+.tencent.com"
-  - "+.tencentmusic.com"
-  - "+.gtimg.com"
-  - "+.gdtimg.com"
-  - "+.smtcdns.com"
-  - "+.qcloud.com"
-  - "+.myqcloud.com"
-  - "+.tencent-cloud.com"
+  - '+.qq.com'
+  - '+.tencent.com'
+  - '+.tencentmusic.com'
+  - '+.gtimg.com'
+  - '+.gdtimg.com'
+  - '+.qcloud.com'
+  - '+.myqcloud.com'
+  - '+.myqcloud.net'
+  - '+.tencent-cloud.com'
+  - '+.weiyun.com'
+  - '+.weishi.com'
+  - '+.qqclass.com'
+  - '+.ugdtimg.com'
+  - '+.smtcdns.com'
+  - '+.txcdns.com'
+  - '+.ovscdns.net'
+  - '+.cdntips.net'
+  - '+.tencentdevices.com'
+  - '+.tencentcs.com'
+  - '+.tdnsv6.com'
+  - '+.tdnsv7.com'
+  - '+.tdnsv8.com'
+  - '+.tenpay.com'
+  # wechat
+  - '+.wechat.com'
+  - '+.wxpayui.com'
   

@@ -1,10 +1,18 @@
 dns:
   fake-ip-filter:
-  - "+.miguvideo.com"
-  - "+.cn.wswebcdn.com"
-  - "+.miguvideo.com.wsglb0.com"
-  - "+.miguvideo.com.wsdvs.com"
-  - "+.miguvideo.com.w.kunluncan.com"
-  - "+.cmread.com"
-  - "+.chinamobile.com"
-  
+  - '+.miguvideo.com'
+  - '+.cn.wswebcdn.com'
+  - '+.miguvideo.com.wsglb0.com'
+  - '+.miguvideo.com.wsdvs.com'
+  - '+.miguvideo.com.w.kunluncan.com'
+  - '+.chinamobile.com'
+  - '+.cmcc-vr.com'
+  - '+.migufm.com'
+  - '+.migugk.com'
+  - '+.migucloud.com'
+  - '+.migutv.com'
+  - '+.cmread.com'
+  - '+.shoujibao.net'
+  - '+.mgcdns.com'
+  - '+.miguxue.com'
+

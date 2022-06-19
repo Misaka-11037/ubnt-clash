@@ -1,16 +1,19 @@
 dns:
-fake-ip-filter:
-  - "+.kwaizat.com"
-  - "+.ksapisrv.com"
-  - "+.inkuai.com"
-  - "+.gifshow.com"
-  - "+.kuaishouzt.com"
-  - "+.yximgs.com"
-  - "+.kwimgs.com"
-  - "+.kuaishoupay.com"
-  - "+.kwaixiaodian.com"
-  - "+.kuaishou.com"
-  - "+.inkuai.com"
-  - "+.ksyun.com"
-  - "+.kspkg.com"
-  - "+.kwaicdn.com"
+  fake-ip-filter:
+  - '+.kwaizat.com'
+  - '+.ksapisrv.com'
+  - '+.inkuai.com'
+  - '+.gifshow.com'
+  - '+.kuaishouzt.com'
+  - '+.yximgs.com'
+  - '+.kwimgs.com'
+  - '+.kuaishoupay.com'
+  - '+.kwaixiaodian.com'
+  - '+.kuaishou.com'
+  - '+.ksyun.com'
+  - '+.kspkg.com'
+  - '+.kwaicdn.com'
+  - '+.kwai.com'
+  - '+.kwai.xyz'
+  - '+.kwaiying.com'
+  - '+.kstv.com'

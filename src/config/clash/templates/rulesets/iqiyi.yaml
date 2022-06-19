@@ -1,6 +1,16 @@
 dns:
   fake-ip-filter:
-  - "+.qy.net"
-  - "+.iqiyi.com"
-  - "+.iqiyipic.com"
-  - "+.gitv.tv"
+  - '+.qy.net'
+  - '+.qy.com'
+  - '+.qiyi.com'
+  - '+.qiyipic.com'
+  - '+.ibkstore.com'
+  - '+.iqiyi.com'
+  - '+.iqiyipic.com'
+  - '+.gitv.tv'
+  - '+.iqiyiedge.com'
+  - '+.71edge.com'
+  - '+.71edge.net'
+  - '+.iqiyiedge.net'
+  - '+.aiqiyicloud.com'
+  - '+.aiqiyicloud.net'
