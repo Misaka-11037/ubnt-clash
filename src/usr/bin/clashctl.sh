@@ -369,7 +369,7 @@ function start()
 
   disabled=$(cli-shell-api existsActive interfaces clash $DEV disable)
 
-  if [ $disabled ]; then
+  if $disabled; then
     echo "$DEV disabled" 1>&2
     exit;
   fi
@@ -434,7 +434,7 @@ function run_cron()
 
     disabled=$(cli-shell-api existsActive interfaces clash $device disable)
 
-    if [ $disabled ]; then
+    if $disabled; then
       echo "$DEV disabled" 1>&2
       continue;
     fi
@@ -486,6 +486,11 @@ function run_cron()
   done
 }
 
+function monitor_test()
+{
+  python /usr/bin/clashmonitor.py test $DEV
+}
+
 case $1 in
   start)
     start
@@ -534,6 +539,10 @@ case $1 in
   status)
     check_status
     ;;  
+
+  test)
+    monitor_test
+    ;;
 
   check_update | check_version)
     clash_version

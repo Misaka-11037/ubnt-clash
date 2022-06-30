@@ -15,3 +15,8 @@ dns:
   - '+.mi.com'
   - '+.xiaomi.com'
   - '+.xiaomi.net'
+  - '+.cnbeta.com'
+  - '+.cnbetacdn.com'
+  - '+.mysmth.net'
+  - '+.ctrip.com'
+  - '+.c-ctrip.com'

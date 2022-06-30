@@ -1,9 +1,15 @@
+ubnt-clash (0.4.4) sid; urgency=medium
+
+  * Fix 'disable' in configure mode
+
+ -- sskaje <sskaje@gmail.com>  Wed, 29 Jun 2022 02:32:00 +0000
+
 ubnt-clash (0.4.3) sid; urgency=medium
 
   * Follow location when downloading config files
 
  -- sskaje <sskaje@gmail.com>  Sat, 12 Jun 2022 04:56:00 +0000
- 
+
 ubnt-clash (0.4.2) sid; urgency=medium
 
   * Fix config rehash/reload
