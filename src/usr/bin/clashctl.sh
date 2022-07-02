@@ -367,9 +367,9 @@ function start()
     fi
   fi
 
-  disabled=$(cli-shell-api existsActive interfaces clash $DEV disable)
+  cli-shell-api existsActive interfaces clash $DEV disable
 
-  if $disabled; then
+  if [ $? -eq 0 ]; then
     echo "$DEV disabled" 1>&2
     exit;
   fi
@@ -432,9 +432,9 @@ function run_cron()
     eval "device=($device)"
     echo "Processing Device $device" 1>&2
 
-    disabled=$(cli-shell-api existsActive interfaces clash $device disable)
+    cli-shell-api existsActive interfaces clash $DEV disable
 
-    if $disabled; then
+    if [ $? -eq 0 ]; then
       echo "$DEV disabled" 1>&2
       continue;
     fi
