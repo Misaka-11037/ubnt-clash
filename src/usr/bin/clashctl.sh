@@ -46,6 +46,9 @@ if [[ "$hwtype" == "mips64" ]]; then
 elif [[ "$hwtype" == "mips" ]]; then
   CLASH_SUFFIX="mipsle-hardfloat-"
   YQ_SUFFIX="mipsle"
+elif [[ "$hwtype" == "aarch64" ]]; then
+  echo "Are you using UnifiOS devices?"
+  exit
 else
   echo "Unknown Arch"
   exit -1

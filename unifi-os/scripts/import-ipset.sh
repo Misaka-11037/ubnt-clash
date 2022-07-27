@@ -1,10 +1,10 @@
 #!/bin/sh
-
+. $(dirname $(realpath $0))/../env.sh
 
 NAME=$1
 
-[ -f ../config/$NAME.txt ] || exit;
+[ -f $UCROOT/config/$NAME.txt ] || exit;
 
-for i in $(cat ../config/$NAME.txt);
+for i in $(cat $UCROOT/config/ipset/$NAME.txt);
   do ipset add -! $NAME $i;
 done

@@ -1,6 +1,7 @@
 #!/bin/sh
+. $(dirname $(realpath $0))/../env.sh
 
-
-./add-firewall.sh br2 192.168.1.1
-
+for DEV in ${INTERFACES[@]}; do 
+    $UCROOT/scripts/add-firewall.sh $DEV $DEFAULT_ROUTER_IP
+done
 

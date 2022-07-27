@@ -1,9 +1,10 @@
 #!/bin/sh
 
-ipset create SRC_CLASH hash:net
+. $(dirname $(realpath $0))/../env.sh
 
-ipset create DST_CHINA_IP hash:net
-
-ipset create DST_LAN_IP hash:net
-
+for i in $(ls $UCROOT/config/ipset/*.txt); do
+	KEY=$(basename $i | awk -F '.' '{print $1}') 
+	echo "Import ipset $KEY"
+	ipset create "$KEY" hash:net
+done
 
