@@ -8,3 +8,5 @@ for i in $(ls $UCROOT/config/ipset/*.txt); do
 	ipset create "$KEY" hash:net
 done
 
+. $UCROOT/scripts/update-config.sh
+
