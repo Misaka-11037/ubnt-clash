@@ -1,6 +1,7 @@
 ubnt-clash (0.4.4) sid; urgency=medium
 
   * Fix 'disable' in configure mode
+  * Skip 'url-test' in monitor script
 
  -- sskaje <sskaje@gmail.com>  Wed, 29 Jun 2022 02:32:00 +0000
 

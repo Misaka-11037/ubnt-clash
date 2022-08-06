@@ -78,6 +78,11 @@ class ClashMonitor:
         tested = []
         
         for i in providers: 
+            # url-test
+            if i in proxies and type in proxies[i] and proxies[i]['type'] == 'URLTest':
+                pass
+
+            # todo: choose a default from config?
             if i in proxies and 'now' in proxies[i]:
 
                 current = to_test = proxies[i]['now']
@@ -140,6 +145,7 @@ class ClashMonitor:
 
 
 if __name__ == '__main__':
+
     if len(sys.argv) > 1:
         # load config from script
         secret = subprocess.check_output(['/usr/bin/yq', '.secret', '/run/clash/utun/config.yaml']).strip()
@@ -156,6 +162,10 @@ if __name__ == '__main__':
             else:
                 print("Connection failed")
         elif sys.argv[1] == 'monitor':
+            # skip network connectivity check
+            if os.path.exists("/config/clash/NO_MONITOR"):
+                print("NO_MONITOR found", file=sys.stderr)
+                exit(-1)
             monitor.monitor()
     else:
         # monitor mode by default

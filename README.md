@@ -321,6 +321,19 @@ clashctl ...
 ```
 
 
+## Flags
+
+### USE_PROXY
+
+`/config/clash/USE_PROXY`
+
+See About Proxy above
+
+### NO_MONITOR
+
+`/config/clash/NO_MONITOR`
+
+Create this file to disable proxy auto change.
 
 
 ## Cron 
