@@ -1,6 +1,6 @@
 # ubnt-clash
 
-English | [中文版](README.zh.md)
+English | [中文版](README.zh.md) | [中文 Wiki](https://github.com/sskaje/ubnt-clash/wiki)
 
 Clash config for Ubnt EdgeRouters
 

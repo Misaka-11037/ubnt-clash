@@ -1,4 +1,6 @@
 debian/ubnt-clash/**
+debian/ubnt-clash.*
+debian/files/**
 .DS*
 *.deb
 tests/**
