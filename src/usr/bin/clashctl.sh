@@ -83,6 +83,7 @@ Commands:
   start [utun]           Start an instance
   stop [utun]            Stop an instance
   restart [utun]         Restart an instance
+  purge_cache [utun]     Remove cache.db and restart
   delete [utun]          Delete an instance
   status [utun]          Show instance status
   rehash [utun]          Download config and restart to reload 
@@ -494,6 +495,11 @@ function monitor_test()
   python /usr/bin/clashmonitor.py test $DEV
 }
 
+function purge_cache()
+{
+  rm -f $CLASH_RUN_ROOT/$DEV/cache.db
+}
+
 case $1 in
   start)
     start
@@ -513,6 +519,13 @@ case $1 in
     ;;
 
   restart)
+    stop
+    sleep 1
+    start
+    ;;
+
+  purge_cache)
+    purge_cache
     stop
     sleep 1
     start
