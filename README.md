@@ -11,6 +11,9 @@ Only supports configuration from URL.
 Download deb package from https://github.com/sskaje/ubnt-clash/releases
 
 ```
+# root required
+sudo su
+
 # Download deb package, copy URL from above
 curl -OL https://github.com/sskaje/ubnt-clash/releases/download/x.y.z/ubnt-clash_x.y.z_all.deb
 dpkg -i  ubnt-clash_x.y.z_all.deb
