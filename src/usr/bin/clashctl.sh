@@ -131,6 +131,11 @@ function github_download()
 
   API_URL=https://api.github.com/repos/$REPO/releases/$TAG
 
+  if [ "$USE_PROXY" == "1" ]; then
+    echo "API will be proxied via p.rst.im" 1>&2
+    API_URL=$(echo $API_URL | sed -e 's#api.github.com#p.rst.im/q/api.github.com#')
+  fi 
+
   ASSET_URL=$(curl -q -s $API_URL | jq -r '.assets[0] | select(.name == "'$NAME'") | .browser_download_url')
 
   http_download $ASSET_URL
@@ -144,6 +149,11 @@ function github_releases()
 
   API_URL=https://api.github.com/repos/$REPO/releases/$TAG
   
+  if [ "$USE_PROXY" == "1" ]; then
+    echo "API will be proxied via p.rst.im" 1>&2
+    API_URL=$(echo $API_URL | sed -e 's#api.github.com#p.rst.im/q/api.github.com#')
+  fi 
+
   ASSET_URL=$(curl -q -s $API_URL | jq -r '.assets')
 
   echo $ASSET_URL
