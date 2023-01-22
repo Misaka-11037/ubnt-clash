@@ -51,6 +51,10 @@ elif [[ "$hwtype" == "mips" ]]; then
 elif [[ "$hwtype" == "aarch64" ]]; then
   echo "Are you using UnifiOS devices?"
   exit
+elif [[ "$hwtype" == "x86_64" ]]; then
+  # VyOS, amd64 only
+  CLASH_SUFFIX="linux-amd64-v3-"
+  YQ_SUFFIX="linux_amd64"
 else
   echo "Unknown Arch"
   exit -1
