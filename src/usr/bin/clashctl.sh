@@ -356,7 +356,7 @@ function generate_config()
   if [ "$CLASH_EXECUTABLE" == "meta" ]; then
     config_files+=($CLASH_CONFIG_ROOT/$DEV/meta.d/*.yaml)
   fi
-  yq eval-all --from-file /usr/share/ubnt-clash/one.yq ${config_files[@]} > $CLASH_RUN_ROOT/$DEV/config.yaml
+  $YQ_BINARY eval-all --from-file /usr/share/ubnt-clash/one.yq ${config_files[@]} > $CLASH_RUN_ROOT/$DEV/config.yaml
 
 
   # manually setting order to ensure local rules correctly inserted before downloaded rules
@@ -610,6 +610,11 @@ case $1 in
     stop
     sleep 1
     start
+    ;;
+
+  generate_config)
+    # re-generate for test purpose
+    generate_config
     ;;
 
   cron | monitor)
