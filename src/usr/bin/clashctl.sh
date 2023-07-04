@@ -3,7 +3,7 @@
 # Clash Control Script
 #
 # Author: sskaje (https://sskaje.me/ https://github.com/sskaje/ubnt-clash)
-# Version: 0.1.0
+# Version: 0.5.0
 #
 # Required commands:
 #    curl
@@ -18,6 +18,8 @@ YQ_BINARY=/usr/bin/yq
 YQ_SUFFIX=
 UI_PATH=/config/clash/dashboard
 CLASH_DASHBOARD_URL=https://github.com/Dreamacro/clash-dashboard/archive/refs/heads/gh-pages.tar.gz
+CURLOPT=${CURLOPT:-$(cat /config/clash/CURLOPT)}
+
 
 CLASH_CONFIG_ROOT=/config/clash
 
@@ -123,8 +125,8 @@ function http_download()
   fi
 
   TMPFILE=$(mktemp)
-  echo curl -L -o "$TMPFILE" $ASSET_URL 1>&2
-  curl -L -o "$TMPFILE" $ASSET_URL
+  echo curl $CURLOPT -L -o "$TMPFILE" $ASSET_URL 1>&2
+  curl $CURLOPT -L -o "$TMPFILE" $ASSET_URL
 
   echo "$TMPFILE"
 }
@@ -142,7 +144,7 @@ function github_download()
     API_URL=$(echo $API_URL | sed -e 's#api.github.com#p.rst.im/q/api.github.com#')
   fi
 
-  ASSET_URL=$(curl -q -s $API_URL | jq -r '.assets[0] | select(.name == "'$NAME'") | .browser_download_url')
+  ASSET_URL=$(curl $CURLOPT -q -s $API_URL | jq -r '.assets[0] | select(.name == "'$NAME'") | .browser_download_url')
 
   http_download $ASSET_URL
 }
@@ -160,7 +162,7 @@ function github_releases()
     API_URL=$(echo $API_URL | sed -e 's#api.github.com#p.rst.im/q/api.github.com#')
   fi
 
-  ASSET_URL=$(curl -q -s $API_URL | jq -r '.assets')
+  ASSET_URL=$(curl $CURLOPT -q -s $API_URL | jq -r '.assets')
 
   echo $ASSET_URL
 }
@@ -189,7 +191,6 @@ function install_clash()
   fi
 
   rm -f "$TMPFILE"
-
 }
 
 function clash_version()
@@ -220,7 +221,7 @@ function download_config()
 
   TMPFILE=$(mktemp)
 
-  curl -q -s -L -o "$TMPFILE" $CONFIG_URL
+  curl $CURLOPT -q -s -L -o "$TMPFILE" $CONFIG_URL
   # todo: if executable == clash, check if Country.mmdb exists
 
   # test config and install, in /run/clash/utun
@@ -360,7 +361,7 @@ function generate_config()
 
 
   # manually setting order to ensure local rules correctly inserted before downloaded rules
-#  yq eval-all --from-file /usr/share/ubnt-clash/one.yq \
+#  $YQ_BINARY eval-all --from-file /usr/share/ubnt-clash/one.yq \
 #    $CLASH_CONFIG_ROOT/$DEV/*.yaml \
 #    $CLASH_CONFIG_ROOT/$DEV/rulesets/*.yaml \
 #    $CLASH_CONFIG_ROOT/$DEV/$CLASH_DOWNLOAD_NAME \
@@ -590,7 +591,6 @@ case $1 in
     ;;
 
   check_config)
-
     ;;
 
   show_config)
@@ -634,4 +634,3 @@ case $1 in
     exit 1
     ;;
 esac
-
