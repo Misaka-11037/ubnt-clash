@@ -30,6 +30,10 @@ if [ -f $CLASH_CONFIG_ROOT/USE_PROXY ]; then
   [[ $USE_PROXY -lt 1 ]] && USE_PROXY=1
 fi
 
+if [ -z $USE_PROXY ]; then
+  USE_PROXY=0
+fi
+
 # Clash premium only support 1 single tun interface named utun.
 DEV=utun
 
